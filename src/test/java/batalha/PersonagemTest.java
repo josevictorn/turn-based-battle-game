@@ -33,9 +33,31 @@ class PersonagemTest {
       
       assertThrows(IllegalStateException.class, ()->p.checarTotal());
     }
-    
+
     @Test
     void CT012() {
+      Personagem p = new Personagem() {
+          @Override
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer ataque = 1;
+      Integer defesa = 0;
+      Integer velocidade = 0;
+      Integer resistencia = 0;
+      
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setResistencia(resistencia);
+      p.setVelocidade(velocidade);
+      
+      assertThrows(IllegalStateException.class, ()->p.checarTotal());
+    }
+    
+    @Test
+    void CT013() {
       Personagem p = new Personagem() {
         void checarRegraDeClasse () {
           // Deixado em branco de propósito
@@ -57,7 +79,7 @@ class PersonagemTest {
   
   
     @Test
-    void CT013() {
+    void CT014() {
       Personagem p = new Personagem() {
         void checarRegraDeClasse () {
           // Deixado em branco de propósito
@@ -78,7 +100,7 @@ class PersonagemTest {
     }
     
     @Test
-    void CT014() {
+    void CT015() {
       Personagem p = new Personagem() {
         void checarRegraDeClasse () {
           // Deixado em branco de propósito
@@ -100,7 +122,7 @@ class PersonagemTest {
 
     
     @Test
-    void CT015() {
+    void CT016() {
       Personagem p = new Personagem() {
         void checarRegraDeClasse () {
           // Deixado em branco de propósito
