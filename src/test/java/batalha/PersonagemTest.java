@@ -21,10 +21,10 @@ class PersonagemTest {
         }
       };
 
+      Integer resistencia = 0;
       Integer ataque = 0;
       Integer defesa = 0;
       Integer velocidade = 0;
-      Integer resistencia = 0;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
@@ -43,10 +43,10 @@ class PersonagemTest {
         }
       };
 
-      Integer ataque = 1;
+      Integer resistencia = 1;
+      Integer ataque = 0;
       Integer defesa = 0;
       Integer velocidade = 0;
-      Integer resistencia = 0;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
@@ -64,10 +64,10 @@ class PersonagemTest {
         }
       };
 
+      Integer resistencia = 5;
       Integer ataque = 5;
       Integer defesa = 5;
-      Integer velocidade = 5;
-      Integer resistencia = 4;
+      Integer velocidade = 4;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
@@ -86,10 +86,10 @@ class PersonagemTest {
         }
       };
 
+      Integer resistencia = 5;
       Integer ataque = 5;
       Integer defesa = 5;
       Integer velocidade = 5;
-      Integer resistencia = 5;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
@@ -107,10 +107,10 @@ class PersonagemTest {
         }
       };
 
-      Integer ataque = 5;
-      Integer defesa = 6;
-      Integer velocidade = 5;
       Integer resistencia = 5;
+      Integer ataque = 6;
+      Integer defesa = 5;
+      Integer velocidade = 5;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
@@ -129,10 +129,10 @@ class PersonagemTest {
         }
       };
 
+      Integer resistencia = 10;
       Integer ataque = 10;
       Integer defesa = 10;
       Integer velocidade = 10;
-      Integer resistencia = 10;
       
       p.setAtaque(ataque);
       p.setDefesa(defesa);
