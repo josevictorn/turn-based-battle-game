@@ -14,7 +14,7 @@ public abstract class Personagem {
 	Personagem() {
 	}
 
-	public Personagem(Integer ataque, Integer defesa, Integer velocidade, Integer resistencia) {
+	public Personagem(Integer resistencia, Integer ataque, Integer defesa, Integer velocidade) {
 		this.ataque = ataque;
 		this.defesa = defesa;
 		this.velocidade = velocidade;

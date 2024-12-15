@@ -19,7 +19,7 @@
   | Retorna exceção |  | X | X |
   | Não retorna exceção | X |  |  |
 
-### RN02: Cada atributo deve ter no mínimo 3 pontos
+### RN02: Cada atributo deve ter no mínimo 3 pontos.
 - Partições:
   - [0, 3): O atributo tem potuação menor que 3.
   - [3, 20]: O atributo possui no mínimo 3 pontos.
@@ -35,6 +35,26 @@
   | Velocidade | - | - | - | <3 | >= 3 |
   | Retorna exceção | X | X | X | X |  |
   | Não retorna exceção |  |  |  |  | X |
+
+### RN03: O Guerreiro deve ter os atributos resistência e ataque com os valores mais altos ou empatados.
+- Partições:
+  - Resistência > Ataque
+  - Resistência = Ataque
+  - Resistência < Ataque
+  - Defesa <= (Resistência && Ataque)
+  - Velocidade <= (Resistência && Ataque)
+- Valores limites:
+  - Partição [0, 20]: desde que respeite a RN01 e RN02
+- Tabela de decisão:
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
+  |-------------|-------------|-------------|-------------|
+  | Resistência > Ataque | - | - | - |
+  | Resistência = Ataque | - | - | - |
+  | Resistência < Ataque | - | - | - |
+  | Defesa <= (Resistência && Ataque) | T | F | - |
+  | Velocidade <= (Resistência && Ataque) | T | - | F |
+  | Lança exceção |  | X | X |
+  | Não lança exceçao | X |  |  |
 
 ## Casos de teste
 ### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01) e 
@@ -62,8 +82,27 @@
   | CT022 | 19 | 1 | 0 | 0 | 20 | NE, LE, LE, LE | PRE1, PRE2 | POS2
   | CT023 | 20 | 3 | 0 | 7 | 30 | NE, NE, LE, NE | PRE1, PRE2 | POS2
   | CT024 | 4 | 3 | 11 | 2 | 20 | NE, NE, NE, LE | PRE1, PRE2 | POS2
-  | CT025 | 5 | 5 | 5 | 5 | 21 | NE, NE, NE, NE | PRE1, PRE2 | POS1
+  | CT025 | 5 | 5 | 5 | 5 | 20 | NE, NE, NE, NE | PRE1, PRE2 | POS1
   | CT026 | 21 | 6 | 5 | 4 | 36 | NE, NE, NE, NE | PRE1, PRE2 | POS2
+
+- Saídas esperadas:
+  - LE: Lança exceção
+  - NE: Não lança exceção
+- Pré condições:
+  - PRE1: o sistema solicita dados dos 4 atributos.
+  - PRE2: O usuário inputa os dados dos 4 atributos.
+- Pós-condições:
+  - POS1: o sistema cria o personagem.
+  - POS2: o sistema não cria o personagem.
+  
+### CT03: Checar se um guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si (RN03)
+  | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT031 | 5 | 5 | 5 | 5 | 20 | NE | PRE1, PRE2 | POS2
+  | CT032 | 10 | 4 | 3 | 3 | 20 | NE | PRE1, PRE2 | POS2
+  | CT033 | 6 | 8 | 3 | 3 | 20 | NE | PRE1, PRE2 | POS2
+  | CT034 | 4 | 6 | 3 | 7 | 20 | LE | PRE1, PRE2 | POS2
+  | CT035 | 5 | 4 | 8 | 3 | 20 | LE | PRE1, PRE2 | POS2
 
 - Saídas esperadas:
   - LE: Lança exceção
@@ -102,3 +141,8 @@
   | Resistência >= 3, Ataque >= 3, Defesa < 3 | CT023 |
   | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade < 3 | CT024 |
   | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade >= 3 | CT025, CT026 |
+  | Resistência > Ataque | CT032, CT035 |
+  | Resistência = Ataque | CT031 |
+  | Resistência < Ataque | CT033, CT034 |
+  | Defesa <= (Resistência && Ataque) | CT031, CT032, CT033, CT035 |
+  | Velocidade <= (Resistência && Ataque) | CT031, CT032, CT033, CT034 |
