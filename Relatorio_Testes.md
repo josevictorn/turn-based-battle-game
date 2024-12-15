@@ -183,9 +183,9 @@
   | Resistência = Ataque | CT031 |
   | Resistência < Ataque | CT033, CT034 |
   | Defesa <= (Resistência && Ataque) | CT031, CT032, CT033, CT035 |
-  | Velocidade <= (Resistência && Ataque) | CT031, CT032, CT033, CT034 |
-  | Velocidade > Ataque |  |
-  | Velocidade = Ataque |  |
-  | Velocidade < Ataque |  |
-  | Defesa <= (Velocidade && Ataque) |  |
-  | Resistência <= (Velocidade && Ataque) |  |
+  | Velocidade <= (Resistência && Ataque) | CT031, CT032, CT033 |
+  | Velocidade > Ataque | CT042, CT045 |
+  | Velocidade = Ataque | CT041 |
+  | Velocidade < Ataque | CT043, CT044 |
+  | Defesa <= (Velocidade && Ataque) | CT041, CT042 |
+  | Resistência <= (Velocidade && Ataque) | CT041, CT042, CT043 |
