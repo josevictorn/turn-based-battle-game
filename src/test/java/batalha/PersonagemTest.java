@@ -298,7 +298,7 @@ class PersonagemTest {
   }
 
   @Nested
-  @DisplayName("Checar se um guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si.")
+  @DisplayName("Checar se um Guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si.")
   class CT03 {
     @Test
     void CT031() {
@@ -361,4 +361,70 @@ class PersonagemTest {
       });
     }
   }
+
+  @Nested
+  @DisplayName("Checar se um Assassino possui os atributos Velocidade e Ataque como os mais altos ou empatados entre si.")
+  class CT04 {
+    @Test
+    void CT041() {
+      
+      Integer resistencia = 5;
+      Integer ataque = 5;
+      Integer defesa = 5;
+      Integer velocidade = 5;
+      
+      Personagem p = new Assassino(resistencia, ataque, defesa, velocidade);
+
+      assertDoesNotThrow(()->p.checarRegraDeClasse());
+    }
+
+    @Test
+    void CT042() {
+      Integer resistencia = 3;
+      Integer ataque = 4;
+      Integer defesa = 3;
+      Integer velocidade = 10;
+      
+      Personagem p = new Assassino(resistencia, ataque, defesa, velocidade);
+
+      assertDoesNotThrow(()->p.checarRegraDeClasse());
+    }
+    
+    @Test
+    void CT043() {
+      Integer resistencia = 3;
+      Integer ataque = 8;
+      Integer defesa = 3;
+      Integer velocidade = 6;
+      
+      Personagem p = new Assassino(resistencia, ataque, defesa, velocidade);
+
+      assertDoesNotThrow(()->p.checarRegraDeClasse());
+    }
+  
+    @Test
+    void CT044() {
+      Integer resistencia = 7;
+      Integer ataque = 6;
+      Integer defesa = 3;
+      Integer velocidade = 4;
+      
+      assertThrows(IllegalStateException.class, () -> {
+        new Assassino(resistencia, ataque, defesa, velocidade);
+      });
+    }
+    
+    @Test
+    void CT045() {      
+      Integer resistencia = 3;
+      Integer ataque = 4;
+      Integer defesa = 8;
+      Integer velocidade = 5;
+      
+      assertThrows(IllegalStateException.class, () -> {
+        new Assassino(resistencia, ataque, defesa, velocidade);
+      });
+    }
+  }
+
 }

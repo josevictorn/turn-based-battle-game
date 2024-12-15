@@ -8,6 +8,12 @@ public class Assassino extends Personagem {
 
 	@Override
 	final void checarRegraDeClasse() {
-		// TODO Auto-generated method stub
+		if((this.getDefesa() > (this.getVelocidade())) & (this.getDefesa() > this.getAtaque())) {
+			throw new IllegalStateException("O atributo Defesa não pode ultrapassar os atributos Resistência e Ataque.");
+		}
+		
+		if((this.getResistencia() > this.getVelocidade()) & (this.getResistencia() > this.getAtaque())) {
+			throw new IllegalStateException("O atributo Velocidade não pode ultrapassar os atributos Resistência e Ataque.");
+		}
 	}
 }

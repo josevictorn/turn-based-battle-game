@@ -56,6 +56,26 @@
   | Lança exceção |  | X | X |
   | Não lança exceçao | X |  |  |
 
+### RN04: O Assassino deve ter os atributos ataque e velocidade com os valores mais altos ou empatados.
+- Partições:
+  - Velocidade > Ataque
+  - Velocidade = Ataque
+  - Velocidade < Ataque
+  - Defesa <= (Velocidade && Ataque)
+  - Resistência <= (Velocidade && Ataque)
+- Valores limites:
+  - Partição [0, 20]: desde que respeite a RN01 e RN02
+- Tabela de decisão:
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
+  |-------------|-------------|-------------|-------------|
+  | Velocidade > Ataque | - | - | - |
+  | Velocidade = Ataque | - | - | - |
+  | Velocidade < Ataque | - | - | - |
+  | Defesa <= (Velocidade && Ataque) | T | F | - |
+  | Resistêcia <= (Velocidade && Ataque) | T | - | F |
+  | Lança exceção |  | X | X |
+  | Não lança exceçao | X |  |  |
+
 ## Casos de teste
 ### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01) e 
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
@@ -95,7 +115,7 @@
   - POS1: o sistema cria o personagem.
   - POS2: o sistema não cria o personagem.
   
-### CT03: Checar se um guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si (RN03)
+### CT03: Checar se um Guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si (RN03)
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT031 | 5 | 5 | 5 | 5 | 20 | NE | PRE1, PRE2 | POS2
@@ -114,6 +134,24 @@
   - POS1: o sistema cria o personagem.
   - POS2: o sistema não cria o personagem.
 
+### CT04: Checar se um Assassino possui os atributos Velocidade e Ataque como os mais altos ou empatados entre si (RN03)
+  | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT041 | 5 | 5 | 5 | 5 | 20 | NE | PRE1, PRE2 | POS2
+  | CT042 | 3 | 4 | 3 | 10 | 20 | NE | PRE1, PRE2 | POS2
+  | CT043 | 3 | 8 | 3 | 6 | 20 | NE | PRE1, PRE2 | POS2
+  | CT044 | 7 | 6 | 3 | 4 | 20 | LE | PRE1, PRE2 | POS2
+  | CT045 | 3 | 4 | 8 | 5 | 20 | LE | PRE1, PRE2 | POS2
+
+- Saídas esperadas:
+  - LE: Lança exceção
+  - NE: Não lança exceção
+- Pré condições:
+  - PRE1: o sistema solicita dados dos 4 atributos.
+  - PRE2: O usuário inputa os dados dos 4 atributos.
+- Pós-condições:
+  - POS1: o sistema cria o personagem.
+  - POS2: o sistema não cria o personagem.
 
 ## Matriz de rastreabilidade
   | Partição / Critério | Casos de Teste Relacionados |
@@ -146,3 +184,8 @@
   | Resistência < Ataque | CT033, CT034 |
   | Defesa <= (Resistência && Ataque) | CT031, CT032, CT033, CT035 |
   | Velocidade <= (Resistência && Ataque) | CT031, CT032, CT033, CT034 |
+  | Velocidade > Ataque |  |
+  | Velocidade = Ataque |  |
+  | Velocidade < Ataque |  |
+  | Defesa <= (Velocidade && Ataque) |  |
+  | Resistência <= (Velocidade && Ataque) |  |
