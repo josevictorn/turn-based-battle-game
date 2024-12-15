@@ -37,7 +37,9 @@ public abstract class Personagem {
 	}
 
 	final void checarValorMinimo(Integer atributo) {
-		// TODO
+		if (atributo < 3) {
+			throw new IllegalStateException(" Cada atributo deve ter no mínimo 3 pontos.");
+		}
 	}
 
 	final void checarTotal() {

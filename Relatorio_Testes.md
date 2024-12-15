@@ -11,7 +11,7 @@
   - Partição [20]: {19, 20, 21}
   - Partição (20, ∞): {19, 20, 21, 40}
 - Tabelas de decisão:
-  | Condições | Condição 1 | Condição 2 | Condição 3 |
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
   |-------------|-------------|-------------|-------------|
   | Soma total dos pontos = 20 | T | - | - |
   | Soma total dos pontos < 20 | - | T | - |
@@ -25,22 +25,80 @@
   - [3, 20]: O atributo possui no mínimo 3 pontos.
 - Valores limites:
   - Partição [0, 3): {0, 2}
-  - Partição [3, 20]: {2, }
+  - Partição [3, 20]: {2, 3, 4, 19, 20, 21}
+- Tabela de decisão:
+  | Condições | Regra 1 | Regra 2 | Regra 3 |  Regra 4 |  Regra 5 |
+  |-------------|-------------|-------------|-------------|-------------|-------------|
+  | Resistência | < 3 | >= 3 | >= 3 | >= 3 | >= 3 |
+  | Ataque | - | < 3 | >= 3 | >= 3 | >= 3 |
+  | Defesa | - | - | <3 | >=3 | >= 3 |
+  | Velocidade | - | - | - | <3 | >= 3 |
+  | Retorna exceção | X | X | X | X |  |
+  | Não retorna exceção |  |  |  |  | X |
 
 ## Casos de teste
-### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01)
+### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01) e 
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
-  | CT011 | 0 | 0 | 0 | 0 | 0 | Lançar exceção | PRE1 | POS2
-  | CT012 | 1 | 0 | 0 | 0 | 1 | Lançar exceção | PRE1 | POS2
-  | CT013 | 5 | 5 | 5 | 4 | 19 | Lançar exceção | PRE1 | POS2
-  | CT014 | 5 | 5 | 5 | 5 | 20 | Não lançar exceção | PRE1 | POS1
-  | CT015 | 5 | 6 | 5 | 5 | 21 | Lançar exceção | PRE1 | POS2
-  | CT016 | 10 | 10 | 10 | 10 | 40 | Lançar exceção | PRE1 | POS2
+  | CT011 | 0 | 0 | 0 | 0 | 0 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
+  | CT012 | 1 | 0 | 0 | 0 | 1 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
+  | CT013 | 5 | 5 | 5 | 4 | 19 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
+  | CT014 | 5 | 5 | 5 | 5 | 20 | Não lançar exceção | PRE1, PRE2, PRE3 | POS1
+  | CT015 | 5 | 6 | 5 | 5 | 21 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
+  | CT016 | 10 | 10 | 10 | 10 | 40 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
 
 - Pré condições:
-  - PRE1: o sistema realiza a soma dos pontos dos atributos
+  - PRE1: o sistema solicita dados dos 4 atributos.
+  - PRE2: O usuário inputa os dados dos 4 atributos.
+  - PRE3: o sistema realiza a soma dos pontos dos atributos.
 - Pós-condições:
-  - POS1: o sistema cria o personagem
-  - POS2: o sistema não cria o personagem
+  - POS1: o sistema cria o personagem.
+  - POS2: o sistema não cria o personagem.
   
+### CT02: Checar se o total de ponto de cada atributos é no mínimo 3 (RN02)
+  | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT021 | 0 | 0 | 0 | 0 | 0 | LE, LE, LE, LE | PRE1, PRE2 | POS2
+  | CT022 | 19 | 1 | 0 | 0 | 20 | NE, LE, LE, LE | PRE1, PRE2 | POS2
+  | CT023 | 20 | 3 | 0 | 7 | 30 | NE, NE, LE, NE | PRE1, PRE2 | POS2
+  | CT024 | 4 | 3 | 11 | 2 | 20 | NE, NE, NE, LE | PRE1, PRE2 | POS2
+  | CT025 | 5 | 5 | 5 | 5 | 21 | NE, NE, NE, NE | PRE1, PRE2 | POS1
+  | CT026 | 21 | 6 | 5 | 4 | 36 | NE, NE, NE, NE | PRE1, PRE2 | POS2
+
+- Saídas esperadas:
+  - LE: Lança exceção
+  - NE: Não lança exceção
+- Pré condições:
+  - PRE1: o sistema solicita dados dos 4 atributos.
+  - PRE2: O usuário inputa os dados dos 4 atributos.
+- Pós-condições:
+  - POS1: o sistema cria o personagem.
+  - POS2: o sistema não cria o personagem.
+
+
+## Matriz de rastreabilidade
+  | Partição / Critério | Casos de Teste Relacionados |
+  |-------------|-------------|
+  | Soma dos atributos < 20  | CT011, CT013 |
+  | Soma dos atributos = 20 | CT014 |
+  | Soma dos atributos > 20 | CT015, CT016 |
+  | Soma dos atributos = 0 | CT011 |
+  | Soma dos atributos = 1 | CT012 |
+  | Soma dos atributos = 19 | CT013 |
+  | Soma dos atributos = 21 | CT015 |
+  | Soma dos atributos = 40 | CT016 |
+  | Valor de atributo < 3 | CT021, CT022, CT023, CT024 |
+  | Valor de atributo >= 3 | CT022, CT023, CT024, CT025, CT026 |
+  | Valor de atributo = 0 | CT021, CT022, CT023 |
+  | Valor de atributo = 2 | CT024 |
+  | Valor de atributo = 3 | CT023, CT024 |
+  | Valor de atributo = 4 | CT024 |
+  | Valor de atributo = 19 | CT022 |
+  | Valor de atributo = 20 | CT023 |
+  | Valor de atributo = 21 | CT026 |
+  | Valor Resistência < 3 | CT021 |
+  | Resistência < 3 | CT021 |
+  | Resistência >= 3, Ataque < 3 | CT022 |
+  | Resistência >= 3, Ataque >= 3, Defesa < 3 | CT023 |
+  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade < 3 | CT024 |
+  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade >= 3 | CT025, CT026 |

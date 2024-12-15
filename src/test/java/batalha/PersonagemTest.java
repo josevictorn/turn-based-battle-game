@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class PersonagemTest {
 
   @Nested
-  @DisplayName("Checar se o total de ponto alocados nos atributos é válido")
+  @DisplayName("Checar se o total de ponto alocados nos atributos é válido.")
   class CT01 {
     @Test
     void CT011() {
@@ -140,6 +140,158 @@ class PersonagemTest {
       p.setVelocidade(velocidade);
       
       assertThrows(IllegalStateException.class, ()->p.checarTotal());		
+    }
+  }
+
+  @Nested
+  @DisplayName("Checar se o total de ponto de cada atributos é no mínimo 3.")
+  class CT02 {
+    @Test
+    void CT021() {
+      Personagem p = new Personagem() {
+          @Override
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 0;
+      Integer ataque = 0;
+      Integer defesa = 0;
+      Integer velocidade = 0;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(resistencia));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(ataque));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(defesa));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(velocidade));
+    }
+
+    @Test
+    void CT022() {
+      Personagem p = new Personagem() {
+          @Override
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 19;
+      Integer ataque = 1;
+      Integer defesa = 0;
+      Integer velocidade = 0;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertDoesNotThrow(()->p.checarValorMinimo(resistencia));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(ataque));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(defesa));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(velocidade));
+    }
+    
+    @Test
+    void CT023() {
+      Personagem p = new Personagem() {
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 20;
+      Integer ataque = 3;
+      Integer defesa = 0;
+      Integer velocidade = 7;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertDoesNotThrow(()->p.checarValorMinimo(resistencia));
+      assertDoesNotThrow(()->p.checarValorMinimo(ataque));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(defesa));
+      assertDoesNotThrow(()->p.checarValorMinimo(velocidade));
+    }
+  
+  
+    @Test
+    void CT024() {
+      Personagem p = new Personagem() {
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 4;
+      Integer ataque = 3;
+      Integer defesa = 11;
+      Integer velocidade = 2;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertDoesNotThrow(()->p.checarValorMinimo(resistencia));
+      assertDoesNotThrow(()->p.checarValorMinimo(ataque));
+      assertDoesNotThrow(()->p.checarValorMinimo(defesa));
+      assertThrows(IllegalStateException.class, ()->p.checarValorMinimo(velocidade));
+    }
+    
+    @Test
+    void CT025() {
+      Personagem p = new Personagem() {
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 5;
+      Integer ataque = 5;
+      Integer defesa = 5;
+      Integer velocidade = 5;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertDoesNotThrow(()->p.checarValorMinimo(resistencia));
+      assertDoesNotThrow(()->p.checarValorMinimo(ataque));
+      assertDoesNotThrow(()->p.checarValorMinimo(defesa));
+      assertDoesNotThrow(()->p.checarValorMinimo(velocidade));
+    }
+
+    
+    @Test
+    void CT026() {
+      Personagem p = new Personagem() {
+        void checarRegraDeClasse () {
+          // Deixado em branco de propósito
+        }
+      };
+
+      Integer resistencia = 21;
+      Integer ataque = 6;
+      Integer defesa = 5;
+      Integer velocidade = 4;
+      
+      p.setResistencia(resistencia);
+      p.setAtaque(ataque);
+      p.setDefesa(defesa);
+      p.setVelocidade(velocidade);
+
+      assertDoesNotThrow(()->p.checarValorMinimo(resistencia));
+      assertDoesNotThrow(()->p.checarValorMinimo(ataque));
+      assertDoesNotThrow(()->p.checarValorMinimo(defesa));
+      assertDoesNotThrow(()->p.checarValorMinimo(velocidade));
     }
   }
 }
