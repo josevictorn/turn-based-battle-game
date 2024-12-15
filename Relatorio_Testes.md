@@ -76,6 +76,25 @@
   | Lança exceção |  | X | X |
   | Não lança exceçao | X |  |  |
 
+### RN05: O personagem que ataca primeiro deve ser determinado pelo valor da velocidade.
+- Partições:
+  - Velocidade de p1 > Velocidade de p2: o personagem p1 deve ataca primeiro.
+  - Velocidade de p2 > Velocidade de p1: o personagem p2 deve atacar primeiro.
+  - Velocidade de p1 = Velocidade de p2: a ordem de ataque é decidida aleatoriamente.
+- Valores limites:
+  - Mínimo: 0.
+  - Máximo: qualquer valor inteiro positivo.
+- Tabela de decisão:
+  | Condições | Regra 1 | Regra 2 | Regra 3 | Regra 4 |
+  |-------------|-------------|-------------|-------------|-------------|
+  | Velocidade de p1 > Velocidade de p2 | T | - | - | - |
+  | Velocidade de p1 < Velocidade de p2 | - | T | - | - |
+  | Velocidade de p1 = Velocidade de p2 | - | - | T | T |
+  | Ordem aleatória decide p1 como primeiro | - | - | T | F |
+  | Ordem aleatória decide p2 como primeiro | - | - | F | T |
+  | p1 ataca primeiro | X |  | X |  |
+  | p2 ataca primeiro |  | X |  | X |
+
 ## Casos de teste
 ### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01) e 
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
@@ -153,6 +172,22 @@
   - POS1: o sistema cria o personagem.
   - POS2: o sistema não cria o personagem.
 
+### CT05: Determina quem ataca primeiro (RN05)
+  | ID | Velocidade p1 | Velocidade p2 | Valor aleatório | Saída esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT051 | 5 | 5 | 0 | P1 | PRE1, PRE2 |  |
+  | CT052 | 5 | 5 | 1 | P2 | PRE1, PRE2 |  |
+  | CT053 | 6 | 4 | - | P1 | PRE1, PRE2 |  |
+  | CT053 | 3 | 8 | - | P2 | PRE1, PRE2 |  |
+
+- Saídas esperadas:
+  - P1: o personagem p1 deve atacar primeiro.
+  - P2: o personagem p2 deve atacar primeiro.
+- Pré condições:
+  - PRE1: o sistema solicita valor do atributo velocidade para cada um dos personagens (respeitando RN01 e RN02).
+  - PRE2: o usuário inputa os dados de velocidade de ambos os personagens.
+- Pós-condições:
+
 ## Matriz de rastreabilidade
   | Partição / Critério | Casos de Teste Relacionados |
   |-------------|-------------|
@@ -189,3 +224,8 @@
   | Velocidade < Ataque | CT043, CT044 |
   | Defesa <= (Velocidade && Ataque) | CT041, CT042 |
   | Resistência <= (Velocidade && Ataque) | CT041, CT042, CT043 |
+  | Velocidade de p1 > Velocidade de p2 | CT053 |
+  | Velocidade de p1 < Velocidade de p2 | CT054 |
+  | Velocidade de p1 = Velocidade de p2 | CT051, CT052 |
+  | Ordem aleatória decide p1 como primeiro | CT051 |
+  | Ordem aleatória decide p2 como primeiro | CT052 |
