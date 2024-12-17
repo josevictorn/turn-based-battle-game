@@ -95,29 +95,19 @@
   | p1 ataca primeiro | X |  | X |  |
   | p2 ataca primeiro |  | X |  | X |
 
-### RN06: Chance de evasão
+### RN06: Cálculo da Chance de Evasão
 - Partições: 
-  - Velocidade do Defensor> Velocidade do atacante
-  - Velocidade do Defensor≤ Velocidade do atacante
-  - Calcular a Chance de Evasão
-  - Gerar um número aleatório entre 1 e 100
-  - Número gerado ≤ Chance de Evasão
-  - Número gerado > Chance de Evasão
+  - Velocidade do Defensor > Velocidade do Atacante
+  - Velocidade do Defensor ≤ Velocidade do Atacante
 - Valores limites: 
-  - Partição (Velocidade do Defensor> Velocidade do atacante): Chance de Evasão (%) = min(50, (Velocidade do Defensor - Velocidade do Atacante) * 2 ). Com valor máximo de 50 e mínimo de 1.
-  - Partição (Velocidade do Defensor≤ Velocidade do atacante): 0% de chance de evasão.
+  - [0, 50] = {0, 1, 49, 50, 51}
 - Tabela de decisão:
   
-  | Condições | Regra 1 | Regra 2 | Regra 3 |
-  |-------------|-------------|-------------|-------------|
-  | Velocidade do Defensor ≤ Velocidade do atacante | T | F | F |
-  | Velocidade do Defensor > Velocidade do atacante | - | T | T |
-  | Calcular a Chance de Evasão | - | T | T |
-  | Gerar um número aleatório entre 1 e 100 | - | T | T |
-  | Número gerado ≤ Chance de Evasão | - | T | F |
-  | Número gerado > Chance de Evasão | - | F | T |
-  | Ataque é evitado |   | X |   |
-  | Ataque não é evitado | X  |  | X |
+  | Condições | Regra 1 | Regra 2 |
+  |-------------|-------------|-------------|
+  | Número gerado ≤ Chance de Evasão | T | F |
+  | Ataque é evitado | X |  |
+  | Ataque não é evitado |  | X |
 
 ### RN07: Cálculo de Golpes Críticos
 
@@ -174,7 +164,8 @@
   | Dano Infringido maior ou igual a 1 |  | X |
 
 ## Casos de teste
-### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01) e 
+### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01)
+<a id="CT01"></a>
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT011 | 0 | 0 | 0 | 0 | 0 | Lançar exceção | PRE1, PRE2, PRE3 | POS2
@@ -193,6 +184,8 @@
   - POS2: o sistema não cria o personagem.
   
 ### CT02: Checar se o total de ponto de cada atributos é no mínimo 3 (RN02)
+<a id="CT02"></a>
+
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT021 | 0 | 0 | 0 | 0 | 0 | LE, LE, LE, LE | PRE1, PRE2 | POS2
@@ -213,6 +206,8 @@
   - POS2: o sistema não cria o personagem.
   
 ### CT03: Checar se um Guerreiro possui os atributos Resistência e Ataque como os mais altos ou empatados entre si (RN03)
+<a id="CT03"></a>
+
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT031 | 5 | 5 | 5 | 5 | 20 | NE | PRE1, PRE2 | POS2
@@ -232,6 +227,8 @@
   - POS2: o sistema não cria o personagem.
 
 ### CT04: Checar se um Assassino possui os atributos Velocidade e Ataque como os mais altos ou empatados entre si (RN03)
+<a id="CT04"></a>
+
   | ID | Resistência | Ataque | Defesa | Velocidade | Total | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT041 | 5 | 5 | 5 | 5 | 20 | NE | PRE1, PRE2 | POS2
@@ -251,6 +248,8 @@
   - POS2: o sistema não cria o personagem.
 
 ### CT05: Determina quem ataca primeiro (RN05)
+<a id="CT05"></a>
+
   | ID | Velocidade p1 | Velocidade p2 | Valor aleatório | Saída esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|
   | CT051 | 5 | 5 | 0 | P1 | PRE1, PRE2 |  |
@@ -267,13 +266,15 @@
 - Pós-condições:
 
 ### CT06: Verificação de Evasão (RN06)
-  | ID | Velocidade do Atacante | Velocidade  do Defensor | Número Gerado aleatório | Cálculo da Chance de evasão | Saída Esperada | Pré-condição | Pós-condição |
-  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
-  | CT061 | 5 | 4 | - | - | ANE | PRE1 |  |  
-  | CT062 | 5 | 5 | - | - | ANE | PRE1 |  | 
-  | CT063 | 6 | 7 | 1 | 2 | AE | PRE1 |  | 
-  | CT064 | 6 | 8 | 4 | 4 | AE | PRE1 |  | 
-  | CT065 | 5 | 8 | 7 | 6 | ANE | PRE1 |  | 
+<a id="CT06"></a>
+
+  | ID | Chance de evasão | Número Gerado aleatório | Saída Esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT061 | 0 | 0 | AE | PRE1 | - |
+  | CT062 | 1 | 0 | AE | PRE1 | - |
+  | CT063 | 49 | 64 | ANE | PRE1 | - |
+  | CT064 | 50 | 50 | AE | PRE1 | - |
+  | CT065 | 51 | 100 | ANE | PRE1 | - |
 
 - Saídas esperadas:
   - ANE: Ataque não evitado
@@ -282,6 +283,8 @@
   - PRE1: o sistema solicita valor do atributo velocidade para cada um dos personagens (respeitando RN01 e RN02).
 
 ### CT07: Checagem de Dano Crítico (RN07)
+<a id="CT07"></a>
+
   | ID | Número aleatório gerado entre 1 e 100 | Número gerado≤10 | Número gerado>10 | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
   | CT071 | 9 | 1 | 0 | DI*1.5 | PRE1 |  |
@@ -294,6 +297,8 @@
   - PRE1: o sistema verifica se ocorreu o ataque de algum dos personagens (respeitando RN01 e RN02).
 
 ### CT08:  Checagem do Dano Base(RN08)
+<a id="CT08"></a>
+
   | ID | Ataque | Variação Minima | Variação Máxima | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
   | CT081 | 6 | Ataque * 0,8 | - | VA | PRE1 |  |
@@ -306,6 +311,8 @@
   - PRE1: o sistema verifica se ocorreu o ataque de algum dos personagens (respeitando RN01 e RN02).
 
 ### CT09:  Checagem do Dano Base(RN09)
+<a id="CT09"></a>
+
   | ID | Dano Base | Ataque do Atacante | Defesa do Defensor | Cálculo do Dano Infringido | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
   | CT091 | 3 | 3 | 7 | -1 | DI | PRE1; PRE2; PRE3 |  |
@@ -319,25 +326,17 @@
   - PRE2: O sistema verificar o Ataque do Atacante.
   - PRE3: O sistema verificar a Defesa do Defensor
 
-
-
-
-
-
-
-
-
 ## Matriz de rastreabilidade
   | Partição / Critério | Casos de Teste Relacionados |
   |-------------|-------------|
-  | Soma dos atributos < 20  | CT011, CT013 |
-  | Soma dos atributos = 20 | CT014 |
-  | Soma dos atributos > 20 | CT015, CT016 |
-  | Soma dos atributos = 0 | CT011 |
-  | Soma dos atributos = 1 | CT012 |
-  | Soma dos atributos = 19 | CT013 |
-  | Soma dos atributos = 21 | CT015 |
-  | Soma dos atributos = 40 | CT016 |
+  | Soma dos atributos < 20  | [CT011](#CT01), [CT013](#CT01) |
+  | Soma dos atributos = 20 | [CT014](#CT01) |
+  | Soma dos atributos > 20 | [CT015](#CT01), [CT016](#CT01) |
+  | Soma dos atributos = 0 | [CT011](#CT01) |
+  | Soma dos atributos = 1 | [CT012](#CT01) |
+  | Soma dos atributos = 19 | [CT013](#CT01) |
+  | Soma dos atributos = 21 | [CT015](#CT01) |
+  | Soma dos atributos = 40 | [CT016](#CT01) |
   | Valor de atributo < 3 | CT021, CT022, CT023, CT024 |
   | Valor de atributo >= 3 | CT022, CT023, CT024, CT025, CT026 |
   | Valor de atributo = 0 | CT021, CT022, CT023 |
@@ -368,3 +367,5 @@
   | Velocidade de p1 = Velocidade de p2 | CT051, CT052 |
   | Ordem aleatória decide p1 como primeiro | CT051 |
   | Ordem aleatória decide p2 como primeiro | CT052 |
+  | Número gerado ≤ Chance de Evasão | [CT061](#CT06), [CT062](#CT06), [CT064](#CT06) |
+  | Número gerado > Chance de Evasão | [CT063](#CT06), [CT065](#CT06) |
