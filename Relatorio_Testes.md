@@ -337,35 +337,35 @@
   | Soma dos atributos = 19 | [CT013](#CT01) |
   | Soma dos atributos = 21 | [CT015](#CT01) |
   | Soma dos atributos = 40 | [CT016](#CT01) |
-  | Valor de atributo < 3 | CT021, CT022, CT023, CT024 |
-  | Valor de atributo >= 3 | CT022, CT023, CT024, CT025, CT026 |
-  | Valor de atributo = 0 | CT021, CT022, CT023 |
-  | Valor de atributo = 2 | CT024 |
-  | Valor de atributo = 3 | CT023, CT024 |
-  | Valor de atributo = 4 | CT024 |
-  | Valor de atributo = 19 | CT022 |
-  | Valor de atributo = 20 | CT023 |
-  | Valor de atributo = 21 | CT026 |
-  | Valor Resistência < 3 | CT021 |
-  | Resistência < 3 | CT021 |
-  | Resistência >= 3, Ataque < 3 | CT022 |
-  | Resistência >= 3, Ataque >= 3, Defesa < 3 | CT023 |
-  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade < 3 | CT024 |
-  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade >= 3 | CT025, CT026 |
-  | Resistência > Ataque | CT032, CT035 |
-  | Resistência = Ataque | CT031 |
-  | Resistência < Ataque | CT033, CT034 |
-  | Defesa <= (Resistência && Ataque) | CT031, CT032, CT033, CT035 |
-  | Velocidade <= (Resistência && Ataque) | CT031, CT032, CT033 |
-  | Velocidade > Ataque | CT042, CT045 |
-  | Velocidade = Ataque | CT041 |
-  | Velocidade < Ataque | CT043, CT044 |
-  | Defesa <= (Velocidade && Ataque) | CT041, CT042 |
-  | Resistência <= (Velocidade && Ataque) | CT041, CT042, CT043 |
-  | Velocidade de p1 > Velocidade de p2 | CT053 |
-  | Velocidade de p1 < Velocidade de p2 | CT054 |
-  | Velocidade de p1 = Velocidade de p2 | CT051, CT052 |
-  | Ordem aleatória decide p1 como primeiro | CT051 |
-  | Ordem aleatória decide p2 como primeiro | CT052 |
+  | Valor de atributo < 3 | [CT021](#CT02), [CT022](#CT02), [CT023](#CT02), [CT024](#CT02) |
+  | Valor de atributo >= 3 | [CT022](#CT02), [CT023](#CT02), [CT024](#CT02), [CT025](#CT02), [CT026](#CT02) |
+  | Valor de atributo = 0 | [CT021](#CT02), [CT022](#CT02), [CT023](#CT02) |
+  | Valor de atributo = 2 | [CT024](#CT02) |
+  | Valor de atributo = 3 | [CT023](#CT02), [CT024](#CT02) |
+  | Valor de atributo = 4 | [CT024](#CT02) |
+  | Valor de atributo = 19 | [CT022](#CT02) |
+  | Valor de atributo = 20 | [CT023](#CT02) |
+  | Valor de atributo = 21 | [CT026](#CT02) |
+  | Valor Resistência < 3 | [CT021](#CT02) |
+  | Resistência < 3 | [CT021](#CT02) |
+  | Resistência >= 3, Ataque < 3 | [CT022](#CT02) |
+  | Resistência >= 3, Ataque >= 3, Defesa < 3 | [CT023](#CT02) |
+  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade < 3 | [CT024](#CT02) |
+  | Resistência >= 3, Ataque >= 3, Defesa >= 3, Velocidade >= 3 | [CT025](#CT02), [CT026](#CT02) |
+  | Resistência > Ataque | [CT032](#CT03), [CT035](#CT03) |
+  | Resistência = Ataque | [CT031](#CT03) |
+  | Resistência < Ataque | [CT033](#CT03), [CT034](#CT03) |
+  | Defesa <= (Resistência && Ataque) | [CT031](#CT03), [CT032](#CT03), [CT033](#CT03), [CT035](#CT03) |
+  | Velocidade <= (Resistência && Ataque) | [CT031](#CT03), [CT032](#CT03), [CT033](#CT03) |
+  | Velocidade > Ataque | [CT042](#CT04), [CT045](#CT04) |
+  | Velocidade = Ataque | [CT041](#CT04) |
+  | Velocidade < Ataque | [CT043](#CT04), [CT044](#CT04) |
+  | Defesa <= (Velocidade && Ataque) | [CT041](#CT04), [CT042](#CT04) |
+  | Resistência <= (Velocidade && Ataque) | [CT041](#CT04), [CT042](#CT04), [CT043](#CT04) |
+  | Velocidade de p1 > Velocidade de p2 | [CT053](#CT05) |
+  | Velocidade de p1 < Velocidade de p2 | [CT054](#CT05) |
+  | Velocidade de p1 = Velocidade de p2 | [CT051](#CT05), [CT052](#CT05) |
+  | Ordem aleatória decide p1 como primeiro | [CT051](#CT05) |
+  | Ordem aleatória decide p2 como primeiro | [CT052](#CT05) |
   | Número gerado ≤ Chance de Evasão | [CT061](#CT06), [CT062](#CT06), [CT064](#CT06) |
   | Número gerado > Chance de Evasão | [CT063](#CT06), [CT065](#CT06) |
