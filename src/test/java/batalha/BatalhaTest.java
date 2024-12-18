@@ -189,6 +189,7 @@ class BatalhaTest {
       int chanceEvasao = Batalha.calcularChanceEvasao(atacante.getVelocidade(), defensor.getVelocidade());
 
       Assertions.assertEquals(2, chanceEvasao);
+      //xxx
     }
   }
 
