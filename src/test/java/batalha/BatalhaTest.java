@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -135,4 +136,35 @@ class BatalhaTest {
       assertEquals(personagem_esperado, personagem_retornado);
     }
   }
+  @Nested
+  @DisplayName("Verificação de Evasão")
+  class CT06 {
+    @Test
+    void CT061() {
+      Integer velocidadeAtacante = 5;
+      Integer velocidadeDefensor = 4;
+
+      Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+          // Deixado em branco de propósito
+        }
+      };
+      Personagem defensor = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+          // Deixado em branco de propósito
+        }
+      };
+
+      atacante.setVelocidade(velocidadeAtacante);
+      defensor.setVelocidade(velocidadeDefensor);
+
+      int chanceEvasao = Batalha.calcularChanceEvasao(atacante.getVelocidade(), defensor.getVelocidade());
+
+      Assertions.assertEquals(2, chanceEvasao);
+    }
+  }
+
+
 }

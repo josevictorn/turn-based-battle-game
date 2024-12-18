@@ -30,8 +30,10 @@
 		</dependency>
 	</dependencies>
 
-	<properties>
-		<junit-platform.version>1.11.0-M2</junit-platform.version>
-		<junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
-	</properties>
+    <properties>
+        <junit-platform.version>1.11.0-M2</junit-platform.version>
+        <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 </project>
