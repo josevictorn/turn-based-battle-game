@@ -112,22 +112,22 @@
 ### RN07: Cálculo de Golpes Críticos
 
 - Partições:
-  - Gerar um número aleatório entre 1 e 100 
-  - Número gerado≤10
+  - Número gerado<10
+  - Número gerado=10
   - Número gerado>10
 
 - Valores limites: 
-  - [1,10]: O número gerado tem pontuação maior ou igual a 1 e menor ou igual a 10
-  - (10,100]: O número gerado tem pontuação maior que 10 e menor que 100.
+  - [1,10]: {0, 1, 9, 10}
+  - (10,100]: {10, 11, 99, 100, 101}
 - Tabela de decisão:
-  | Condições | Regra 1 | Regra 2 | 
-  |-------------|-------------|-------------|
-  | Gerar um número aleatório entre 1 e 100 | T | T |
-  | Número gerado≤10 | T | F |
-  | Número gerado>10 | F | T |
-  | Golpe crítico | X |  |
-  | Não é Golpe crítico |  | X |
-  | Dano infringido é multiplicado por 1.5 | X |  | 
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
+  |-------------|-------------|-------------| -------------|
+  | Número gerado < 10 | T | F | F |
+  | Número gerado = 10 | F | T | F |
+  | Número gerado>10 | F | F | T |
+  | Golpe crítico | X | X |   |
+  | Não é Golpe crítico |  |  | X |
+  | Dano infringido é multiplicado por 1.5 | X | X |  |
 
 ### RN08: Dano Base
 
@@ -135,12 +135,11 @@
   - Dano Base(Minimo)
   - Dano Base(Máximo)
 - Valores limites: 
-  - Mínimo: Ataque * 0,8
-  - Máximo: Ataque * 1,2
+  - [80,100): O dano base corresponde Ataque * 0,8
+  - (100,120]: O dano base corresponde Ataque * 1,2
 - Tabela de decisão:
   | Condições | Regra 1 | Regra 2 |
   |-------------|-------------|-------------|
-  | Ataque | T | T |
   | Variação Mínima(Ataque * 0,8) | T | F |
   | Variação Máxima(Ataque * 1,2) | F | T |
   | Arredondamento | X | X |
@@ -149,20 +148,19 @@
 
 - Partições: 
   - Dano Infringido<1
-  - Dano Infringido ≥ 1
+  - Dano Infringido = 1
+  - Dano Infringido > 1
 - Valores limites: 
   - Partição <1: o dano infringido não pode ser menor que 1.
   - Partição ≥1: corresponde aos valores que podem ser assumidos pelo Dano infringido.
 - Tabela de decisão:
-  | Condições | Regra 1 | Regra 2 |
-  |-------------|-------------|-------------|
-  | Dano Base | T | T |
-  | Ataque do Atacante | T | T |
-  | Defesa do Defensor | T | T |
-  | Calcular do Dano Infringido | T | T |
-  | Dano Infringido menor que 1 | X |  |
-  | Dano Infringido maior ou igual a 1 |  | X |
-
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
+  |-------------|-------------|-------------|-------------| 
+  | Dano infringido<1 | T | - | - |
+  | Dano infringido=1 | - | T | - |
+  | Dano infringido>1 | - | - | T |
+  | Dano Considerado | X | X |  X |
+  
 ## Casos de teste
 ### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01)
 <a id="CT01"></a>
@@ -284,15 +282,16 @@
 
 ### CT07: Checagem de Dano Crítico (RN07)
 <a id="CT07"></a>
-
-  | ID | Número aleatório gerado entre 1 e 100 | Número gerado≤10 | Número gerado>10 | Saída Esperada | Pré-condição | Pós-condição |
-  |-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
-  | CT071 | 9 | 1 | 0 | DI*1.5 | PRE1 |  |
-  | CT072 | 10 | 1 | 0 | DI*1.5 | PRE1 |  |
-  | CT073 | 11 | 0 | 0 | - | PRE1 |  |
+  | ID | Número aleatório gerado entre 1 e 100 | Chance de Golpe Crítico≤10% |Saída Esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT071 | 1 | 10% | DI | PRE1 |  |
+  | CT072 | 10 | 10% | DI | PRE1 |  |
+  | CT073 | 11 | - | - | PRE1 |  |
+  | CT074 | 99 | - | - | PRE1 |  |
+  | CT075 | 100 | - | - | PRE1 |  |
 
 - Saídas esperadas:
-  - DI: Dano infringido
+  - DI: Dano infringido*1.5
 - Pré-condição:
   - PRE1: o sistema verifica se ocorreu o ataque de algum dos personagens (respeitando RN01 e RN02).
 
@@ -301,26 +300,26 @@
 
   | ID | Ataque | Variação Minima | Variação Máxima | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
-  | CT081 | 6 | Ataque * 0,8 | - | VA | PRE1 |  |
-  | CT082 | 7 | - | Ataque * 1.2 | VA | PRE1 |  |
-  | CT083 | 8 | Ataque * 0,8 | Ataque * 1.2 | VA | PRE1 |  |
+  | CT081 | 6 | 4.8 | 7.2 | VA = 5 | PRE1 |  |
+  | CT082 | 6 | 4.8 | 7.2 | VA = 7 | PRE1 |  |
 
 - Saídas esperadas:
   - VA: Valor arredondado para o inteiro mais próximo.
 - Pré-condição:
-  - PRE1: o sistema verifica se ocorreu o ataque de algum dos personagens (respeitando RN01 e RN02).
+  - PRE1: o sistema verifica se ocorreu o ataque de algum dos personagens.
 
 ### CT09:  Checagem do Dano Base(RN09)
 <a id="CT09"></a>
 
   | ID | Dano Base | Ataque do Atacante | Defesa do Defensor | Cálculo do Dano Infringido | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------| 
-  | CT091 | 3 | 3 | 7 | -1 | DI | PRE1; PRE2; PRE3 |  |
-  | CT092 | 4 | 4 | 8 | 0 | DI | PRE1; PRE2; PRE3 |  |
-  | CT093 | 4 | 4 | 3 | 5 | DI | PRE1; PRE2; PRE3 |  |
+  | CT091 | 3 | 3 | 7 | -1 | 1 | PRE1; PRE2; PRE3 |  |
+  | CT092 | 4 | 4 | 8 | 0 | 1 | PRE1; PRE2; PRE3 |  |
+  | CT093 | 5 | 4 | 8 | 1 | 1 | PRE1; PRE2; PRE3 |  |
+  | CT094 | 6 | 4 | 8 | 2 | 2 | PRE1; PRE2; PRE3 |  |
 
 - Saídas esperadas:
-  - DI : Dano Infringido.
+  - Dano Infringido = Dano Base + Ataque do Atacante - Defesa do Defensor
 - Pré-condição:
   - PRE1: O sistema obter o Dano Base.
   - PRE2: O sistema verificar o Ataque do Atacante.
