@@ -164,6 +164,32 @@ class BatalhaTest {
 
       Assertions.assertEquals(2, chanceEvasao);
     }
+
+    @Test
+    void CT062() {
+      Integer velocidadeAtacante = 5;
+      Integer velocidadeDefensor = 5;
+
+      Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+          // Deixado em branco de propósito
+        }
+      };
+      Personagem defensor = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+          // Deixado em branco de propósito
+        }
+      };
+
+      atacante.setVelocidade(velocidadeAtacante);
+      defensor.setVelocidade(velocidadeDefensor);
+
+      int chanceEvasao = Batalha.calcularChanceEvasao(atacante.getVelocidade(), defensor.getVelocidade());
+
+      Assertions.assertEquals(2, chanceEvasao);
+    }
   }
 
 
