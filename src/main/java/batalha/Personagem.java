@@ -58,7 +58,7 @@ public abstract class Personagem {
 		int dano = danoBase - defesa;
 		dano = dano < 1 ? 1 : dano; // Garante que o dano mínimo é 1
 		if (eGolpeCritico) {
-			dano = (int) Math.round(dano * 1.5); // Multiplica o dano por 1.5 em caso de crítico
+			dano = (int) Math.round(dano * 1.5); 
 		}
 		return dano;
 	}
