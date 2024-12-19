@@ -528,6 +528,7 @@ void CT085() {
     void CT091() {
       int danoBase=3;
       int defesa=7;
+      int ataqueAtacante=3;
       boolean eGolpeCritico=false;
       Integer valorEsperado=1;
         Personagem atacante = new Personagem() {
@@ -536,6 +537,7 @@ void CT085() {
                 // Deixado em branco de propósito
             }
         };
+        atacante.setAtaque(ataqueAtacante);
         int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
         assertEquals(valorEsperado, dano);
   }
@@ -543,6 +545,7 @@ void CT085() {
   void CT092() {
     int danoBase=4;
     int defesa=8;
+    int ataqueAtacante=4;
     boolean eGolpeCritico=false;
     Integer valorEsperado=1;
       Personagem atacante = new Personagem() {
@@ -551,13 +554,15 @@ void CT085() {
               // Deixado em branco de propósito
           }
       };
+      atacante.setAtaque(ataqueAtacante);
       int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
       assertEquals(valorEsperado, dano);
 }
 @Test
 void CT093() {
   int danoBase=5;
-  int defesa=4;
+  int defesa=8;
+  int ataqueAtacante=4;
   boolean eGolpeCritico=false;
   Integer valorEsperado=1;
     Personagem atacante = new Personagem() {
@@ -566,13 +571,15 @@ void CT093() {
             // Deixado em branco de propósito
         }
     };
+    atacante.setAtaque(ataqueAtacante);
     int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
     assertEquals(valorEsperado, dano);
 }
 @Test
 void CT094() {
   int danoBase=6;
-  int defesa=4;
+  int ataqueAtacante=4;
+  int defesa=8;
   boolean eGolpeCritico=false;
   Integer valorEsperado=2;
     Personagem atacante = new Personagem() {
@@ -581,6 +588,7 @@ void CT094() {
             // Deixado em branco de propósito
         }
     };
+    atacante.setAtaque(ataqueAtacante);
     int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
     assertEquals(valorEsperado, dano);
 }

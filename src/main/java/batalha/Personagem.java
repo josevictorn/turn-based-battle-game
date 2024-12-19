@@ -55,7 +55,7 @@ public abstract class Personagem {
 	}
 
 	int calcularDanoInfringindo(int danoBase, int defesa, boolean eGolpeCritico) {
-		int dano = danoBase - defesa;
+		int dano = this.ataque + danoBase - defesa;
 		dano = dano < 1 ? 1 : dano; // Garante que o dano mínimo é 1
 		if (eGolpeCritico) {
 			dano = (int) Math.round(dano * 1.5); 
