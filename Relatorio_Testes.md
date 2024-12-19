@@ -285,11 +285,11 @@
   | ID | Número aleatório gerado entre 1 e 100 | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|
   | CT071 | 1 | T | PRE1, PRE2 | POS1 |
-  | CT071 | 9 | T | PRE1, PRE2 | POS1 |
-  | CT072 | 10 | T | PRE1, PRE2 |  |
-  | CT073 | 11 | F | PRE1, PRE2 |  |
-  | CT074 | 99 | F | PRE1, PRE2 |  |
-  | CT075 | 100 | F | PRE1, PRE2 |  |
+  | CT072 | 9 | T | PRE1, PRE2 | POS1 |
+  | CT073 | 10 | T | PRE1, PRE2 |  |
+  | CT074 | 11 | F | PRE1, PRE2 |  |
+  | CT075 | 99 | F | PRE1, PRE2 |  |
+  | CT076 | 100 | F | PRE1, PRE2 |  |
 
 - Legenda:
   - PRE1: o sistema gerar um número aleatório entre 1 e 100.
@@ -303,7 +303,7 @@
   |-------------|-------------|-------------|-------------|-------------|-------------|
   | CT081 | 5 | 0.7 | LE | PRE1, PRE2 |  |
   | CT082 | 4 | 0.8 | 3 | PRE1, PRE2 |  |
-  | CT083 | 3 | 0.9 | 2 | PRE1, PRE2 |  |
+  | CT083 | 3 | 0.9 | 3 | PRE1, PRE2 |  |
   | CT084 | 3 | 1.1 | 3 | PRE1, PRE2 |  |
   | CT085 | 4 | 1.2 | 5 | PRE1, PRE2 |  |
   | CT086 | 5 | 1.3 | LE | PRE1, PRE2 |  |
