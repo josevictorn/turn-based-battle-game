@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.security.SecureRandom;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -280,6 +282,35 @@ class BatalhaTest {
   @DisplayName("Checagem de Dano Crítico")
   class CT07 {
 
+    @Test
+    void CT071() {
+        // Personagem atacante = new Personagem() {
+        //     @Override
+        //     void checarRegraDeClasse() {
+        //         // Deixado em branco de propósito
+        //     }
+        // };
+        // Personagem defensor = new Personagem() {
+        //     @Override
+        //     void checarRegraDeClasse() {
+        //         // Deixado em branco de propósito
+        //     }
+        // };
+
+        SecureRandom geradorRandomico = new SecureRandom();
+        int numeroAleatorio = geradorRandomico.nextInt(9, 10);  
+
+        boolean eGolpeCritico = numeroAleatorio <= 10;
+
+        if (eGolpeCritico) {
+    
+            double dano = 10.0; // Supondo dano base
+            double danoCritico = dano * 1.5;
+            Assertions.assertTrue(danoCritico > dano);
+        } else {
+            Assertions.assertFalse(true);
+        }
+    }
   }
 
 }

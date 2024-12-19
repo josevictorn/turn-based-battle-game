@@ -55,19 +55,23 @@ public abstract class Personagem {
 	}
 
 	int calcularDanoInfringindo(int danoBase, int defesa, boolean eGolpeCritico) {
-		// TODO
-		return -1;
+		int dano = danoBase - defesa;
+		dano = dano < 1 ? 1 : dano; // Garante que o dano mínimo é 1
+		if (eGolpeCritico) {
+			dano = (int) Math.round(dano * 1.5); // Multiplica o dano por 1.5 em caso de crítico
+		}
+		return dano;
 	}
 
 	private void receberDano(int danoInfringido) {
-		// TODO
+		vida-=danoInfringido;
 	}
 
 	public int calcularDanoBase(double modificadorAtaque) {
 		// TODO Considere que o modificadorAtaque é um valor entre [0.8 e 1.2[
 		// 		Ele serve de base pra calcular o danoBase
 		//		Recebe como parâmetro para isolar melhor o método, facilitando seu teste
-		return -1;
+		return (int) Math.round(this.ataque * modificadorAtaque);
 	}
 	
 	public Integer getAtaque() {
