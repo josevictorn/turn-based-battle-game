@@ -150,39 +150,16 @@
 ### RN10: Fim da Batalha
 
 - Partições:
-  - HP < 0
-  - HP = 0
-  - HP > 0
+  - HP1 && HP2 <= 0
+  - HP1 | HP2 > 0
 - Valores limites:
-  - Partição <0: {-1,0}
-  - Partição = 0: {-1, 0, 1}
-  - Partição > 1: {-1,0,1}
+  - {-1, 0, 1}
 - Tabela de decisão:
-  | Condições | Regra 1 | Regra 2 | Regra 3 |
-  |-------------|-------------|-------------|-------------|
-  | HP < 0 | T | - | - |
-  | HP = 0 | F | T | - |
-  | HP > 0 | - | - | T |
-  | Fim de batalha | X  | X |  |
-  | Batalha continua |   |   | X |
-
-### RN11: Turnos
-
-- Partições:
-  - HP > 0
-  - HP <= 0
-- Valores limites:
-  - Partição > 0:{-2,0,2}
-  - Partição <= 0:{-2,0,2}
-- Tabela de decisão:
-  | Condições | Regra 1 | Regra 2 | Regra 3 |
-  |-------------|-------------|-------------|-------------|
-  | HP < 0 | T | - | - |
-  | HP = 0 | F | T | - |
-  | HP > 0 | F | F | T |
-  | Alternar turno |  |  | X |
-  | Não alterna turno | X | X  |   |
-
+  | Condições | Regra 1 | Regra 2 |
+  |-------------|-------------|-------------|
+  | HP1 && HP2 <= 0 | F | T |
+  | Fim de batalha | X  |  |
+  | Alternar turnos |  | X |
   
 ## Casos de teste
 ### CT01: Checar se o total de ponto alocados nos atributos é válido (RN01)
@@ -348,59 +325,31 @@
   | CT094 | 6 | 4 | 8 | 2 | 2 | PRE1; PRE2; PRE3 |  |
 
 - Legenda:
-  - Saídas esperadas:
-  - Pré-condição:
-    - PRE1: O sistema calular o Dano Base.
-    - PRE2: O sistema armazenar o Ataque do Atacante.
-    - PRE3: O sistema armazenar a Defesa do Defensor
+  - PRE1: O sistema calular o Dano Base.
+  - PRE2: O sistema armazenar o Ataque do Atacante.
+  - PRE3: O sistema armazenar a Defesa do Defensor
 
 
 ### CT10:  Verificação do Fim da Batalha(RN10)
 <a id="CT09"></a>
 
-  | ID | HP do p1 | HP do p2 | Saída Esperada | Pré-condição | Pós-condição |
+  | ID | HP1 | HP2 | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|
-  | CT101 | -1 | -1 | - | PRE1; PRE2 |   |
-  | CT102 | -1 | 0 | - | PRE1; PRE2 |   |
-  | CT103 | 0 | -1 | - | PRE1; PRE2 |   |
-  | CT104 | 0 | 0 | - | PRE1; PRE2 |   |
-  | CT105 | -1 | 1 | P2 vence | PRE1; PRE2 |   |
-  | CT106 | 0 | 1 | P2 vence | PRE1; PRE2 |   |
-  | CT107 | 1 | -1 | P1 vence | PRE1; PRE2 |   |
-  | CT108 | 1 | 0 | P1 vence | PRE1; PRE2 |   |
-  | CT109 | 1 | 1 | - | PRE1; PRE2 |   |
+  | CT101 | -1 | 0 | ALT | PRE1; PRE2 | POS1 |
+  | CT102 | 1 | 2 | FBP2 | PRE1; PRE2 | POS2 |
+  | CT103 | 2 | 1 | FBP1 | PRE1; PRE2 | POS2 |
+  | CT104 | 0 | -1 | ALT | PRE1; PRE2 | POS1 |
 
-- Saídas esperadas:
-  - O personagem com HP > 0 é declarado vencedor.
- 
-- Pré-condição:
+- Legenda:
+  - HP1: HP do personagem 1.
+  - HP2: HP do personagem 2.
   - PRE1: Obtenção do HP do personagem 1.
   - PRE2: Obtenção do HP do personagem 2.
-    
-### CT11:  Verificação de Alternância de Turnos
-
-| ID | HP do p1 | HP do p2 | Saída Esperada | Pré-condição | Pós-condição |
-|-------------|-------------|-------------|-------------|-------------|-------------|
-| CT111 | -2 | -2 | Jogo encerrado | PRE1; PRE2 |   |
-| CT112 | -2 | 0 | Jogo encerrado | PRE1; PRE2 |   |
-| CT113 | 0 | -2 | Jogo encerrado | PRE1; PRE2 |   |
-| CT114 | 0 | 0 | Jogo encerrado | PRE1; PRE2 |   |
-| CT105 | -2 | 2 | Jogo encerrado | PRE1; PRE2 |   |
-| CT106 | 0 | 2 | Jogo encerrado | PRE1; PRE2 |   |
-| CT107 | 2 | -2 | Jogo encerrado | PRE1; PRE2 |   |
-| CT108 | 2 | 0 | Jogo encerrado | PRE1; PRE2 |   |
-| CT109 | 2 | 2 | O jogo é alternado | PRE1; PRE2 | POS1 |
-
-- Saídas esperadas:
-  - O jogo continua quando ambos os personagens ainda estiverem vivos.
-- Pré-condição:
-  - PRE1: Obtenção do HP do personagem 1.
-  - PRE2: Obtenção do HP do personagem 2.
-
-- Pós-condições:
-  - POS1: o sistema alterna para o próximo turno, iniciando
-novamente com a determinação da ordem de ataque.
-
+  - ALT: Alternar turnos e redefine ordem de ataque.
+  - FBP1: Fim da batalha e P1 campeão.
+  - FBP2: Fim da batalha e P2 campeão.
+  - POS1: continua partida.
+  - POS2: jogo finaliza.
 
 ## Matriz de rastreabilidade
   | Partição / Critério | Casos de Teste Relacionados |
