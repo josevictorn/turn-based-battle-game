@@ -68,10 +68,15 @@ public abstract class Personagem {
 	}
 
 	public int calcularDanoBase(double modificadorAtaque) {
-		// TODO Considere que o modificadorAtaque é um valor entre [0.8 e 1.2[
+		// Considere que o modificadorAtaque é um valor entre [0.8 e 1.2[
 		// 		Ele serve de base pra calcular o danoBase
 		//		Recebe como parâmetro para isolar melhor o método, facilitando seu teste
-		return (int) Math.round(this.ataque * modificadorAtaque);
+		if (modificadorAtaque<0.8||modificadorAtaque>1.2) {
+			throw new IllegalStateException("O valor do modificado de ataque é invalido!");
+		}else{
+			return (int) Math.round(this.ataque * modificadorAtaque);
+		}
+		
 	}
 	
 	public Integer getAtaque() {

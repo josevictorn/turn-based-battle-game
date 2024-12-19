@@ -1,9 +1,11 @@
 package batalha;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.security.SecureRandom;
@@ -421,9 +423,103 @@ void CT076() {
     boolean teste = batalha.verificarSeGolpeCritico(randomico);
     assertFalse(teste);
 }
-
-
-
-
   }
+
+@Nested
+  @DisplayName("Checagem do Dano Base")
+  class CT08 {
+
+    @Test
+    void CT081() {
+      Integer ataque = 5;
+      double randomico = 0.7;
+        Personagem atacante = new Personagem() {
+            @Override
+            void checarRegraDeClasse() {
+                // Deixado em branco de propósito
+            }
+        };
+        atacante.setAtaque(ataque);
+        assertThrows(IllegalStateException.class, 
+     () -> atacante.calcularDanoBase(randomico),"O valor do modificado de ataque é invalido!");
+  
+  }
+  @Test
+  void CT082() {
+    Integer ataque = 4;
+    double randomico = 0.8;
+    Integer valorEsperado=3;
+      Personagem atacante = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      atacante.setAtaque(ataque);
+      int danoBase = atacante.calcularDanoBase(randomico);
+      assertEquals(valorEsperado, danoBase);
+}
+@Test
+void CT083() {
+  Integer ataque = 3;
+  double randomico = 0.9;
+  Integer valorEsperado=3;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setAtaque(ataque);
+    int danoBase = atacante.calcularDanoBase(randomico);
+    assertEquals(valorEsperado, danoBase);
+}
+@Test
+void CT084() {
+  Integer ataque = 3;
+  double randomico = 1.1;
+  Integer valorEsperado=3;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setAtaque(ataque);
+    int danoBase = atacante.calcularDanoBase(randomico);
+    assertEquals(valorEsperado, danoBase);
+}
+@Test
+void CT085() {
+  Integer ataque = 4;
+  double randomico = 1.2;
+  Integer valorEsperado=5;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setAtaque(ataque);
+    int danoBase = atacante.calcularDanoBase(randomico);
+    assertEquals(valorEsperado, danoBase);
+  }
+  @Test
+  void CT086() {
+    Integer ataque = 5;
+    double randomico = 1.3;
+      Personagem atacante = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      atacante.setAtaque(ataque);
+      assertThrows(IllegalStateException.class, 
+   () -> atacante.calcularDanoBase(randomico),"O valor do modificado de ataque é invalido!");
+
+}
+}
+
+  
 }
