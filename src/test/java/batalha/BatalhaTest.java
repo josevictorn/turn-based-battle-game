@@ -520,6 +520,70 @@ void CT085() {
 
 }
 }
+@Nested
+  @DisplayName("Checagem do Dano Infringido")
+  class CT09 {
 
+    @Test
+    void CT091() {
+      int danoBase=3;
+      int defesa=7;
+      boolean eGolpeCritico=false;
+      Integer valorEsperado=1;
+        Personagem atacante = new Personagem() {
+            @Override
+            void checarRegraDeClasse() {
+                // Deixado em branco de propósito
+            }
+        };
+        int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
+        assertEquals(valorEsperado, dano);
+  }
+  @Test
+  void CT092() {
+    int danoBase=4;
+    int defesa=8;
+    boolean eGolpeCritico=false;
+    Integer valorEsperado=1;
+      Personagem atacante = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
+      assertEquals(valorEsperado, dano);
+}
+@Test
+void CT093() {
+  int danoBase=5;
+  int defesa=4;
+  boolean eGolpeCritico=false;
+  Integer valorEsperado=1;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
+    assertEquals(valorEsperado, dano);
+}
+@Test
+void CT094() {
+  int danoBase=6;
+  int defesa=4;
+  boolean eGolpeCritico=false;
+  Integer valorEsperado=2;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    int dano = atacante.calcularDanoInfringindo(danoBase, defesa, eGolpeCritico);
+    assertEquals(valorEsperado, dano);
+}
+}
   
 }
