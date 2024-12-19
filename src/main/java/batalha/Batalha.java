@@ -54,11 +54,19 @@ public class Batalha {
 		}
 		else {
 			double modificadorAtaque = 0.8 + (geradorRandomico.nextDouble() * (0.4));
-			boolean eGolpeCritico = geradorRandomico.nextInt(1, 101) <= 10;
+			boolean eGolpeCritico = verificarSeGolpeCritico();
 			
 			atacante.atacar(defensor, modificadorAtaque, eGolpeCritico);
 		}
 	}
+	//Método para verificar se o golpe é critico, criado para facilitar a realização dos teste usando sobrecarga 
+     public boolean verificarSeGolpeCritico(){
+		return  geradorRandomico.nextInt(1, 101) <= 10;
+	 }
+	//Método obrecarregado para verificar se é golpe critico nos testes
+	public boolean verificarSeGolpeCritico(Integer randomico){
+			return  randomico <= 10;
+	 }
 
 	boolean evadiu(int chanceEvasao, int randomico) {
 		return randomico <= chanceEvasao;

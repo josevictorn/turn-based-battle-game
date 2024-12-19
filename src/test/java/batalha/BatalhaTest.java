@@ -1,6 +1,8 @@
 package batalha;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -284,33 +286,144 @@ class BatalhaTest {
 
     @Test
     void CT071() {
-        // Personagem atacante = new Personagem() {
-        //     @Override
-        //     void checarRegraDeClasse() {
-        //         // Deixado em branco de propósito
-        //     }
-        // };
-        // Personagem defensor = new Personagem() {
-        //     @Override
-        //     void checarRegraDeClasse() {
-        //         // Deixado em branco de propósito
-        //     }
-        // };
-
-        SecureRandom geradorRandomico = new SecureRandom();
-        int numeroAleatorio = geradorRandomico.nextInt(9, 10);  
-
-        boolean eGolpeCritico = numeroAleatorio <= 10;
-
-        if (eGolpeCritico) {
-    
-            double dano = 10.0; // Supondo dano base
-            double danoCritico = dano * 1.5;
-            Assertions.assertTrue(danoCritico > dano);
-        } else {
-            Assertions.assertFalse(true);
-        }
-    }
+      Integer velocidadeAtacante = 5;
+      Integer velocidadeDefensor = 5;
+      Integer randomico = 1;
+        Personagem atacante = new Personagem() {
+            @Override
+            void checarRegraDeClasse() {
+                // Deixado em branco de propósito
+            }
+        };
+        Personagem defensor = new Personagem() {
+            @Override
+            void checarRegraDeClasse() {
+                // Deixado em branco de propósito
+            }
+        };
+        atacante.setVelocidade(velocidadeAtacante);
+        defensor.setVelocidade(velocidadeDefensor);
+        Batalha batalha = new Batalha(atacante, defensor);
+        boolean teste = batalha.verificarSeGolpeCritico(randomico);
+        assertTrue(teste);
   }
 
+  @Test
+  void CT072() {
+    Integer velocidadeAtacante = 5;
+    Integer velocidadeDefensor = 5;
+    Integer randomico = 9;
+      Personagem atacante = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      Personagem defensor = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      atacante.setVelocidade(velocidadeAtacante);
+      defensor.setVelocidade(velocidadeDefensor);
+      Batalha batalha = new Batalha(atacante, defensor);
+      boolean teste = batalha.verificarSeGolpeCritico(randomico);
+      assertTrue(teste);
+}
+  @Test
+  void CT073() {
+    Integer velocidadeAtacante = 5;
+    Integer velocidadeDefensor = 5;
+    Integer randomico = 10;
+      Personagem atacante = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      Personagem defensor = new Personagem() {
+          @Override
+          void checarRegraDeClasse() {
+              // Deixado em branco de propósito
+          }
+      };
+      atacante.setVelocidade(velocidadeAtacante);
+      defensor.setVelocidade(velocidadeDefensor);
+      Batalha batalha = new Batalha(atacante, defensor);
+      boolean teste = batalha.verificarSeGolpeCritico(randomico);
+      assertTrue(teste);
+}
+@Test
+void CT074() {
+  Integer velocidadeAtacante = 5;
+  Integer velocidadeDefensor = 5;
+  Integer randomico = 11;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    Personagem defensor = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setVelocidade(velocidadeAtacante);
+    defensor.setVelocidade(velocidadeDefensor);
+    Batalha batalha = new Batalha(atacante, defensor);
+    boolean teste = batalha.verificarSeGolpeCritico(randomico);
+    assertFalse(teste);
+}
+void CT075() {
+  Integer velocidadeAtacante = 5;
+  Integer velocidadeDefensor = 5;
+  Integer randomico = 99;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    Personagem defensor = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setVelocidade(velocidadeAtacante);
+    defensor.setVelocidade(velocidadeDefensor);
+    Batalha batalha = new Batalha(atacante, defensor);
+    boolean teste = batalha.verificarSeGolpeCritico(randomico);
+    assertFalse(teste);
+}
+void CT076() {
+  Integer velocidadeAtacante = 5;
+  Integer velocidadeDefensor = 5;
+  Integer randomico = 100;
+    Personagem atacante = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    Personagem defensor = new Personagem() {
+        @Override
+        void checarRegraDeClasse() {
+            // Deixado em branco de propósito
+        }
+    };
+    atacante.setVelocidade(velocidadeAtacante);
+    defensor.setVelocidade(velocidadeDefensor);
+    Batalha batalha = new Batalha(atacante, defensor);
+    boolean teste = batalha.verificarSeGolpeCritico(randomico);
+    assertFalse(teste);
+}
+
+
+
+
+  }
 }
