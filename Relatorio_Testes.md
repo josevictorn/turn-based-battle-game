@@ -97,17 +97,27 @@
 
 ### RN06: Cálculo da Chance de Evasão
 - Partições: 
-  - Velocidade do Defensor > Velocidade do Atacante
-  - Velocidade do Defensor ≤ Velocidade do Atacante
+  - Velocidade do Defensor> Velocidade do atacante
+  - Velocidade do Defensor≤ Velocidade do atacante
+  - Calcular a Chance de Evasão
+  - Gerar um número aleatório entre 1 e 100
+  - Número gerado ≤ Chance de Evasão
+  - Número gerado > Chance de Evasão
 - Valores limites: 
-  - [0, 50] = {0, 1, 49, 50, 51}
+   - Partição (Velocidade do Defensor> Velocidade do atacante): Chance de Evasão (%) = min(50, (Velocidade do Defensor - Velocidade do Atacante) * 2 ). Com valor máximo de 50 e mínimo de 1.
+  - Partição (Velocidade do Defensor≤ Velocidade do atacante): 0% de chance de evasão.
 - Tabela de decisão:
   
-  | Condições | Regra 1 | Regra 2 |
-  |-------------|-------------|-------------|
-  | Número gerado ≤ Chance de Evasão | T | F |
-  | Ataque é evitado | X |  |
-  | Ataque não é evitado |  | X |
+  | Condições | Regra 1 | Regra 2 | Regra 3 |
+  |-------------|-------------|-------------|-------------|
+  | Velocidade do Defensor ≤ Velocidade do atacante | T | F | F |
+  | Velocidade do Defensor > Velocidade do atacante | - | T | T |
+  | Calcular a Chance de Evasão | - | T | T |
+  | Gerar um número aleatório entre 1 e 100 | - | T | T |
+  | Número gerado ≤ Chance de Evasão | - | T | F |
+  | Número gerado > Chance de Evasão | - | F | T |
+  | Ataque é evitado |   | X |   |
+  | Ataque não é evitado | X  |  | X |
 
 ### RN07: Cálculo de Golpes Críticos
 
@@ -265,14 +275,13 @@
 
 ### CT06: Verificação de Evasão (RN06)
 <a id="CT06"></a>
-
-  | ID | Chance de evasão | Número Gerado aleatório | Saída Esperada | Pré-condição | Pós-condição |
-  |-------------|-------------|-------------|-------------|-------------|-------------|
-  | CT061 | 0 | 0 | AE | PRE1 | - |
-  | CT062 | 1 | 0 | AE | PRE1 | - |
-  | CT063 | 49 | 64 | ANE | PRE1 | - |
-  | CT064 | 50 | 50 | AE | PRE1 | - |
-  | CT065 | 51 | 100 | ANE | PRE1 | - |
+  | ID | Velocidade do Atacante | Velocidade  do Defensor | Número Gerado aleatório | Cálculo da Chance de evasão | Saída Esperada | Pré-condição | Pós-condição |
+  |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+  | CT061 | 5 | 4 | - | - | ANE | PRE1 |  |  
+  | CT062 | 5 | 5 | - | - | ANE | PRE1 |  | 
+  | CT063 | 6 | 7 | 1 | 2 | AE | PRE1 |  | 
+  | CT064 | 6 | 8 | 4 | 4 | AE | PRE1 |  | 
+  | CT065 | 5 | 8 | 7 | 6 | ANE | PRE1 |  | 
 
 - Saídas esperadas:
   - ANE: Ataque não evitado
