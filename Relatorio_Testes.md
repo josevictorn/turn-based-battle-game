@@ -331,7 +331,7 @@
 
 
 ### CT10:  Verificação do Fim da Batalha(RN10)
-<a id="CT09"></a>
+<a id="CT10"></a>
 
   | ID | HP1 | HP2 | Saída Esperada | Pré-condição | Pós-condição |
   |-------------|-------------|-------------|-------------|-------------|-------------|
@@ -394,3 +394,7 @@
   | Ordem aleatória decide p2 como primeiro | [CT052](#CT05) |
   | Número gerado ≤ Chance de Evasão | [CT061](#CT06), [CT062](#CT06), [CT064](#CT06) |
   | Número gerado > Chance de Evasão | [CT063](#CT06), [CT065](#CT06) |
+  | Dano Base + Ataque do Atacante  <= Defesa do Defensor | [CT091](#CT09) [CT092](#CT09)
+  | Dano Base + Ataque do Atacante > Defesa do Defensor | [CT093](#CT09) [CT094](#CT09)
+  | HP1 && HP2 <= 0 | [CT101](#CT10) [CT104](#CT10)
+  | HP1 | HP2 > 0 | [CT102](#CT10) [CT103](#CT10)
