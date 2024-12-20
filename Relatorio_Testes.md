@@ -412,4 +412,4 @@
   | Não é um golpe crítico | [CT074](#CT07), [CT075](#CT07), [CT076](#CT07) |
   | Dano infringido é multiplicado por 1.5 | [CT071](#CT07), [CT072](#CT07), [CT075](#CT07) |
   | HP1 && HP2 <= 0 | [CT101](#CT10) [CT104](#CT10)
-  | HP1 | HP2 > 0 | [CT102](#CT10) [CT103](#CT10)
+  | HP1 ou HP2 > 0 | [CT102](#CT10) [CT103](#CT10)
