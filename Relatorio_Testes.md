@@ -396,14 +396,16 @@
   | Velocidade < Ataque | [CT043](#CT04), [CT044](#CT04) |
   | Defesa <= (Velocidade && Ataque) | [CT041](#CT04), [CT042](#CT04) |
   | Resistência <= (Velocidade && Ataque) | [CT041](#CT04), [CT042](#CT04), [CT043](#CT04) |
-  | Velocidade de p1 > Velocidade de p2 | [CT053](#CT05) |
-  | Velocidade de p1 < Velocidade de p2 | [CT054](#CT05) |
-  | Velocidade de p1 = Velocidade de p2 | [CT051](#CT05), [CT052](#CT05) |
+  | Velocidade de p1 > Velocidade de p2 | [CT053](#CT05) [CT061](#CT06)|
+  | Velocidade de p1 < Velocidade de p2 | [CT054](#CT05) , [CT063](#CT06), [CT064](#CT06), [CT065](#CT06)|
+  | Velocidade de p1 = Velocidade de p2 | [CT051](#CT05), [CT052](#CT05) , [CT062](#CT06)|
   | Ordem aleatória decide p1 como primeiro | [CT051](#CT05) |
   | Ordem aleatória decide p2 como primeiro | [CT052](#CT05) |
   | Número gerado ≤ Chance de Evasão | [CT061](#CT06), [CT062](#CT06), [CT064](#CT06) |
   | Número gerado > Chance de Evasão | [CT063](#CT06), [CT065](#CT06) |
   | Dano Base + Ataque do Atacante  <= Defesa do Defensor | [CT091](#CT09) [CT092](#CT09)
   | Dano Base + Ataque do Atacante > Defesa do Defensor | [CT093](#CT09) [CT094](#CT09)
+  | Ataque é evitado |   [CT063](#CT06), [CT064](#CT06)|
+  | Ataque não é evitado | [CT061](#CT06), [CT062](#CT06), [CT065](#CT06)|
   | HP1 && HP2 <= 0 | [CT101](#CT10) [CT104](#CT10)
   | HP1 | HP2 > 0 | [CT102](#CT10) [CT103](#CT10)
