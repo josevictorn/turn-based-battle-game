@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>teste101</groupId>
-	<artifactId>batalha</artifactId>
+	<artifactId>batalha-josevictornascimento-vladimirvieira-gustavosouza</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Batalhas</name>
-	<description>Trabalho de Testes, Projeto Batalhas</description>
+	<description>Este trabalho foi feito por: josevictornascimento, vladimirvieira, gustavosouza</description>
 
 	<dependencies>
 		<dependency>
