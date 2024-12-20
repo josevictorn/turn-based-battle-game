@@ -1,7 +1,7 @@
 ##Autores
 - Gustavo
 - jose victor
-- vladimir
+- vladimir.
 ##introdução
 Este projeto é uma implementação de um sistema de batalha por turnos, onde personagens com atributos específicos (Ataque, Defesa, Velocidade e Resistência) se enfrentam.
 O objetivo principal é simular a luta entre dois personagens e determinar o
