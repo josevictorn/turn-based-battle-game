@@ -407,5 +407,9 @@
   | Dano Base + Ataque do Atacante > Defesa do Defensor | [CT093](#CT09) [CT094](#CT09)
   | Ataque é evitado |   [CT063](#CT06), [CT064](#CT06)|
   | Ataque não é evitado | [CT061](#CT06), [CT062](#CT06), [CT065](#CT06)|
+  | Número gerado <= 10 | [CT071](#CT07), [CT072](#CT07), [CT075](#CT07)|
+  | Golpe crítico |  [CT074](#CT07), [CT075](#CT07), [CT076](#CT07)|
+  | Não é um golpe crítico | [CT074](#CT07), [CT075](#CT07), [CT076](#CT07) |
+  | Dano infringido é multiplicado por 1.5 | [CT071](#CT07), [CT072](#CT07), [CT075](#CT07) |
   | HP1 && HP2 <= 0 | [CT101](#CT10) [CT104](#CT10)
   | HP1 | HP2 > 0 | [CT102](#CT10) [CT103](#CT10)
