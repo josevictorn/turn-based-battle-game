@@ -404,7 +404,7 @@
   | Número gerado ≤ Chance de Evasão | [CT061](#CT06), [CT062](#CT06), [CT064](#CT06) |
   | Número gerado > Chance de Evasão | [CT063](#CT06), [CT065](#CT06) |
   | Dano Base + Ataque do Atacante  <= Defesa do Defensor | [CT091](#CT09) [CT092](#CT09)
-  | Dano Base + Ataque do Atacante > Defesa do Defensor | [CT093](#CT09) [CT094](#CT09)
+  | Dano Base + Ataque do Atacante > Defesa do Defensor | [CT093](#CT09) |
   | Ataque é evitado |   [CT063](#CT06), [CT064](#CT06)|
   | Ataque não é evitado | [CT061](#CT06), [CT062](#CT06), [CT065](#CT06)|
   | Número gerado <= 10 | [CT071](#CT07), [CT072](#CT07), [CT075](#CT07)|
